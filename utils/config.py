@@ -152,12 +152,18 @@ def app():
         if job_yaml_file is None:
             job_yaml_file = sys.stdin.readline()
         FLAGS = Config(job_yaml_file)
+
+        use_colab = True if 'COLAB_GPU' in os.environ else False
+        use = ''     
+        if use_colab:
+            FLAGS.use_colab = True
+            use = "/content/gdrive/MyDrive/"
     
         model = FLAGS.model.split('.')[1]
         if FLAGS.DENSE_TEACHER:
-            FLAGS.log_dir = f"{model}_DH{FLAGS.DL}_DL{FLAGS.DH}_W{FLAGS.width_mult}_{FLAGS.pruner}_{FLAGS.BS_R}x{FLAGS.BS_C}_T"
+            FLAGS.log_dir = f"{use}{model}_DH{FLAGS.DL}_DL{FLAGS.DH}_W{FLAGS.width_mult}_{FLAGS.pruner}_{FLAGS.BS_R}x{FLAGS.BS_C}_T"
         else:
-            FLAGS.log_dir = f"{model}_DH{FLAGS.DL}_DL{FLAGS.DH}_W{FLAGS.width_mult}_{FLAGS.pruner}_{FLAGS.BS_R}x{FLAGS.BS_C}"
+            FLAGS.log_dir = f"{use}{model}_DH{FLAGS.DL}_DL{FLAGS.DH}_W{FLAGS.width_mult}_{FLAGS.pruner}_{FLAGS.BS_R}x{FLAGS.BS_C}"
     
         return FLAGS
     else:
