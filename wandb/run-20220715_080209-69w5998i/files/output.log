@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "train.py", line 624, in <module>
+    main()
+  File "train.py", line 622, in main
+    train_val_test()
+  File "train.py", line 447, in train_val_test
+    model, model_wrapper = get_model()
+  File "train.py", line 24, in get_model
+    model_lib = importlib.import_module(FLAGS.model)
+AttributeError: 'Config' object has no attribute 'model'
+Traceback (most recent call last):
+  File "train.py", line 624, in <module>
+    main()
+  File "train.py", line 622, in main
+    train_val_test()
+  File "train.py", line 447, in train_val_test
+    model, model_wrapper = get_model()
+  File "train.py", line 24, in get_model
+    model_lib = importlib.import_module(FLAGS.model)
+AttributeError: 'Config' object has no attribute 'model'

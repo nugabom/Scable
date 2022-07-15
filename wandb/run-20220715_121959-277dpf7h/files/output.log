@@ -1,0 +1,25 @@
+Loaded checkpoint gp_mobilenet_v2_DH0.9_DL1.0_W0.35_local_1x2_T at epoch 2.
+Files already downloaded and verified
+Traceback (most recent call last):
+  File "train.py", line 629, in <module>
+    main()
+  File "train.py", line 627, in main
+    train_val_test()
+  File "train.py", line 611, in train_val_test
+    eval_width=width_cal, eval_density=density_cal)
+  File "train.py", line 446, in run_one_epoch
+    result = sum([v.avg for k, v in top1_meters]) / len(top1_meters)
+ZeroDivisionError: division by zero
+Traceback (most recent call last):
+  File "train.py", line 629, in <module>
+    main()
+  File "train.py", line 627, in main
+    train_val_test()
+  File "train.py", line 611, in train_val_test
+    eval_width=width_cal, eval_density=density_cal)
+  File "train.py", line 446, in run_one_epoch
+    result = sum([v.avg for k, v in top1_meters]) / len(top1_meters)
+ZeroDivisionError: division by zero
+Files already downloaded and verified
+Start group-level pruning version training.
+Start validation after calibration.

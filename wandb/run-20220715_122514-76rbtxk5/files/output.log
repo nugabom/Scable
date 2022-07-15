@@ -1,0 +1,41 @@
+Loaded checkpoint gp_mobilenet_v2_DH0.9_DL1.0_W0.35_local_1x2_T at epoch 2.
+Files already downloaded and verified
+Traceback (most recent call last):
+  File "train.py", line 635, in <module>
+    main()
+  File "train.py", line 633, in main
+    train_val_test()
+  File "train.py", line 612, in train_val_test
+    model_wrapper.apply(lambda m: setattr(m, 'width_mult', width_eval))
+  File "/home/kanat77/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 659, in apply
+    module.apply(fn)
+  File "/home/kanat77/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 659, in apply
+    module.apply(fn)
+  File "/home/kanat77/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 659, in apply
+    module.apply(fn)
+  File "/home/kanat77/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 660, in apply
+    fn(self)
+  File "train.py", line 612, in <lambda>
+    model_wrapper.apply(lambda m: setattr(m, 'width_mult', width_eval))
+NameError: free variable 'width_eval' referenced before assignment in enclosing scope
+Traceback (most recent call last):
+  File "train.py", line 635, in <module>
+    main()
+  File "train.py", line 633, in main
+    train_val_test()
+  File "train.py", line 612, in train_val_test
+    model_wrapper.apply(lambda m: setattr(m, 'width_mult', width_eval))
+  File "/home/kanat77/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 659, in apply
+    module.apply(fn)
+  File "/home/kanat77/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 659, in apply
+    module.apply(fn)
+  File "/home/kanat77/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 659, in apply
+    module.apply(fn)
+  File "/home/kanat77/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 660, in apply
+    fn(self)
+  File "train.py", line 612, in <lambda>
+    model_wrapper.apply(lambda m: setattr(m, 'width_mult', width_eval))
+NameError: free variable 'width_eval' referenced before assignment in enclosing scope
+Files already downloaded and verified
+Start group-level pruning version training.
+Start validation after calibration.

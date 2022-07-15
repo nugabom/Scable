@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "train.py", line 648, in <module>
+    main()
+  File "train.py", line 646, in main
+    train_val_test()
+  File "train.py", line 458, in train_val_test
+    model, model_wrapper = get_model()
+  File "train.py", line 27, in get_model
+    model_wrapper = torch.nn.Dataparallel(model).cuda()
+AttributeError: module 'torch.nn' has no attribute 'Dataparallel'
+Traceback (most recent call last):
+  File "train.py", line 648, in <module>
+    main()
+  File "train.py", line 646, in main
+    train_val_test()
+  File "train.py", line 458, in train_val_test
+    model, model_wrapper = get_model()
+  File "train.py", line 27, in get_model
+    model_wrapper = torch.nn.Dataparallel(model).cuda()
+AttributeError: module 'torch.nn' has no attribute 'Dataparallel'

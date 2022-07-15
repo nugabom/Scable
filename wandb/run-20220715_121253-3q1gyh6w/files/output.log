@@ -1,0 +1,21 @@
+Loaded checkpoint gp_mobilenet_v2_DH0.9_DL1.0_W0.35_local_1x2_T at epoch 2.
+Files already downloaded and verified
+Files already downloaded and verified
+Start group-level pruning version training.
+Start validation after calibration.
+Traceback (most recent call last):
+  File "train.py", line 629, in <module>
+    main()
+  File "train.py", line 627, in main
+    train_val_test()
+  File "train.py", line 610, in train_val_test
+    run_one_epoch(model_wrapper, val_loader, criterion, optimizer, epoch, phase='cal',
+UnboundLocalError: local variable 'epoch' referenced before assignment
+Traceback (most recent call last):
+  File "train.py", line 629, in <module>
+    main()
+  File "train.py", line 627, in main
+    train_val_test()
+  File "train.py", line 610, in train_val_test
+    run_one_epoch(model_wrapper, val_loader, criterion, optimizer, epoch, phase='cal',
+UnboundLocalError: local variable 'epoch' referenced before assignment

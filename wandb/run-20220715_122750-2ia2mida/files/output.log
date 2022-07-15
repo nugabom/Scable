@@ -1,0 +1,10 @@
+
+Loaded checkpoint gp_mobilenet_v2_DH0.9_DL1.0_W0.35_local_1x2_T at epoch 2.
+Files already downloaded and verified
+Files already downloaded and verified
+Start group-level pruning version training.
+Start validation after calibration.
+0.8s	test	-1/3: width=0.35, density=1.0 test / top1: 1.002
+0.8s	test	-1/3: width=0.35, density=0.7 test / top1: 1.002
+0.8s	test	-1/3: width=0.35, density=0.8 test / top1: 1.002
+0.8s	test	-1/3: width=0.35, density=0.9 test / top1: 1.002

@@ -1,0 +1,58 @@
+
+Loaded checkpoint gp_mobilenet_v2_DH0.9_DL1.0_W0.35_local_1x2_T at epoch 2.
+Files already downloaded and verified
+Files already downloaded and verified
+Start group-level pruning version training.
+Start validation after calibration.
+Traceback (most recent call last):
+  File "train.py", line 631, in <module>
+    main()
+  File "train.py", line 629, in main
+    train_val_test()
+  File "train.py", line 613, in train_val_test
+    eval_width=width_cal, eval_density=density_cal)
+  File "train.py", line 428, in run_one_epoch
+    output = model(input)
+  File "/home/kanat77/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/kanat77/scalable_pruning/Scalable/models/gp_mobilenet_v2.py", line 121, in forward
+    x = self.features(x)
+  File "/home/kanat77/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/kanat77/.local/lib/python3.6/site-packages/torch/nn/modules/container.py", line 141, in forward
+    input = module(input)
+  File "/home/kanat77/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/kanat77/.local/lib/python3.6/site-packages/torch/nn/modules/container.py", line 141, in forward
+    input = module(input)
+  File "/home/kanat77/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/kanat77/scalable_pruning/Scalable/models/group_level_ops.py", line 63, in forward
+    / self.ratio[1]) * self.ratio[1]
+TypeError: unsupported operand type(s) for *: 'int' and 'NoneType'
+Traceback (most recent call last):
+  File "train.py", line 631, in <module>
+    main()
+  File "train.py", line 629, in main
+    train_val_test()
+  File "train.py", line 613, in train_val_test
+    eval_width=width_cal, eval_density=density_cal)
+  File "train.py", line 428, in run_one_epoch
+    output = model(input)
+  File "/home/kanat77/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/kanat77/scalable_pruning/Scalable/models/gp_mobilenet_v2.py", line 121, in forward
+    x = self.features(x)
+  File "/home/kanat77/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/kanat77/.local/lib/python3.6/site-packages/torch/nn/modules/container.py", line 141, in forward
+    input = module(input)
+  File "/home/kanat77/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/kanat77/.local/lib/python3.6/site-packages/torch/nn/modules/container.py", line 141, in forward
+    input = module(input)
+  File "/home/kanat77/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/kanat77/scalable_pruning/Scalable/models/group_level_ops.py", line 63, in forward
+    / self.ratio[1]) * self.ratio[1]
+TypeError: unsupported operand type(s) for *: 'int' and 'NoneType'

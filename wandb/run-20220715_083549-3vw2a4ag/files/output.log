@@ -1,0 +1,46 @@
+Traceback (most recent call last):
+  File "train.py", line 626, in <module>
+    main()
+  File "train.py", line 624, in main
+    train_val_test()
+  File "train.py", line 449, in train_val_test
+    model, model_wrapper = get_model()
+  File "train.py", line 24, in get_model
+    model_lib = importlib.import_module(FLAGS.model)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 674, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 781, in get_code
+  File "<frozen importlib._bootstrap_external>", line 741, in source_to_code
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/kanat77/scalable_pruning/Scalable/models/gp_mobilenet_v2.py", line 17
+    expand_inp = inp * expand_ratio
+                                   ^
+SyntaxError: invalid syntax
+Traceback (most recent call last):
+  File "train.py", line 626, in <module>
+    main()
+  File "train.py", line 624, in main
+    train_val_test()
+  File "train.py", line 449, in train_val_test
+    model, model_wrapper = get_model()
+  File "train.py", line 24, in get_model
+    model_lib = importlib.import_module(FLAGS.model)
+  File "/usr/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 674, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 781, in get_code
+  File "<frozen importlib._bootstrap_external>", line 741, in source_to_code
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/kanat77/scalable_pruning/Scalable/models/gp_mobilenet_v2.py", line 17
+    expand_inp = inp * expand_ratio
+                                   ^
+SyntaxError: invalid syntax

@@ -1,0 +1,691 @@
+Model(
+  (features): Sequential(
+    (0): Sequential(
+      (0): Conv2d(3, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (1): DynamicGroupBatchNorm2d(
+        16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+        (bn): ModuleList(
+          (0): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          (1): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          (2): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          (3): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+        )
+      )
+      (2): ReLU6(inplace=True)
+    )
+    (1): InvertedResidual(
+      (body): Sequential(
+        (0): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=16, bias=False)
+        (1): DynamicGroupBatchNorm2d(
+          16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+        (2): ReLU6(inplace=True)
+        (3): DynamicGroupConv2d(16, 8, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (4): DynamicGroupBatchNorm2d(
+          8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(9, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(9, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(9, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(9, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+      )
+    )
+    (2): InvertedResidual(
+      (body): Sequential(
+        (0): DynamicGroupConv2d(8, 48, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): DynamicGroupBatchNorm2d(
+          48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+        (2): ReLU6(inplace=True)
+        (3): Conv2d(48, 48, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=48, bias=False)
+        (4): DynamicGroupBatchNorm2d(
+          48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+        (5): ReLU6(inplace=True)
+        (6): DynamicGroupConv2d(48, 8, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (7): DynamicGroupBatchNorm2d(
+          8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(9, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(9, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(9, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(9, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+      )
+    )
+    (3): InvertedResidual(
+      (body): Sequential(
+        (0): DynamicGroupConv2d(8, 48, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): DynamicGroupBatchNorm2d(
+          48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+        (2): ReLU6(inplace=True)
+        (3): Conv2d(48, 48, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=48, bias=False)
+        (4): DynamicGroupBatchNorm2d(
+          48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+        (5): ReLU6(inplace=True)
+        (6): DynamicGroupConv2d(48, 8, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (7): DynamicGroupBatchNorm2d(
+          8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(9, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(9, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(9, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(9, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+      )
+    )
+    (4): InvertedResidual(
+      (body): Sequential(
+        (0): DynamicGroupConv2d(8, 48, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): DynamicGroupBatchNorm2d(
+          48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+        (2): ReLU6(inplace=True)
+        (3): Conv2d(48, 48, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=48, bias=False)
+        (4): DynamicGroupBatchNorm2d(
+          48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+        (5): ReLU6(inplace=True)
+        (6): DynamicGroupConv2d(48, 16, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (7): DynamicGroupBatchNorm2d(
+          16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+      )
+    )
+    (5): InvertedResidual(
+      (body): Sequential(
+        (0): DynamicGroupConv2d(16, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): DynamicGroupBatchNorm2d(
+          96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+        (2): ReLU6(inplace=True)
+        (3): Conv2d(96, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=96, bias=False)
+        (4): DynamicGroupBatchNorm2d(
+          96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+        (5): ReLU6(inplace=True)
+        (6): DynamicGroupConv2d(96, 16, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (7): DynamicGroupBatchNorm2d(
+          16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+      )
+    )
+    (6): InvertedResidual(
+      (body): Sequential(
+        (0): DynamicGroupConv2d(16, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): DynamicGroupBatchNorm2d(
+          96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+        (2): ReLU6(inplace=True)
+        (3): Conv2d(96, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=96, bias=False)
+        (4): DynamicGroupBatchNorm2d(
+          96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+        (5): ReLU6(inplace=True)
+        (6): DynamicGroupConv2d(96, 16, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (7): DynamicGroupBatchNorm2d(
+          16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+      )
+    )
+    (7): InvertedResidual(
+      (body): Sequential(
+        (0): DynamicGroupConv2d(16, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): DynamicGroupBatchNorm2d(
+          96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+        (2): ReLU6(inplace=True)
+        (3): Conv2d(96, 96, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=96, bias=False)
+        (4): DynamicGroupBatchNorm2d(
+          96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+        (5): ReLU6(inplace=True)
+        (6): DynamicGroupConv2d(96, 24, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (7): DynamicGroupBatchNorm2d(
+          24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+      )
+    )
+    (8): InvertedResidual(
+      (body): Sequential(
+        (0): DynamicGroupConv2d(24, 144, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): DynamicGroupBatchNorm2d(
+          144, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+        (2): ReLU6(inplace=True)
+        (3): Conv2d(144, 144, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=144, bias=False)
+        (4): DynamicGroupBatchNorm2d(
+          144, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+        (5): ReLU6(inplace=True)
+        (6): DynamicGroupConv2d(144, 24, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (7): DynamicGroupBatchNorm2d(
+          24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+      )
+    )
+    (9): InvertedResidual(
+      (body): Sequential(
+        (0): DynamicGroupConv2d(24, 144, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): DynamicGroupBatchNorm2d(
+          144, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+        (2): ReLU6(inplace=True)
+        (3): Conv2d(144, 144, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=144, bias=False)
+        (4): DynamicGroupBatchNorm2d(
+          144, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+        (5): ReLU6(inplace=True)
+        (6): DynamicGroupConv2d(144, 24, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (7): DynamicGroupBatchNorm2d(
+          24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+      )
+    )
+    (10): InvertedResidual(
+      (body): Sequential(
+        (0): DynamicGroupConv2d(24, 144, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): DynamicGroupBatchNorm2d(
+          144, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+        (2): ReLU6(inplace=True)
+        (3): Conv2d(144, 144, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=144, bias=False)
+        (4): DynamicGroupBatchNorm2d(
+          144, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+        (5): ReLU6(inplace=True)
+        (6): DynamicGroupConv2d(144, 24, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (7): DynamicGroupBatchNorm2d(
+          24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+      )
+    )
+    (11): InvertedResidual(
+      (body): Sequential(
+        (0): DynamicGroupConv2d(24, 144, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): DynamicGroupBatchNorm2d(
+          144, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+        (2): ReLU6(inplace=True)
+        (3): Conv2d(144, 144, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=144, bias=False)
+        (4): DynamicGroupBatchNorm2d(
+          144, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+        (5): ReLU6(inplace=True)
+        (6): DynamicGroupConv2d(144, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (7): DynamicGroupBatchNorm2d(
+          32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+      )
+    )
+    (12): InvertedResidual(
+      (body): Sequential(
+        (0): DynamicGroupConv2d(32, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): DynamicGroupBatchNorm2d(
+          192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+        (2): ReLU6(inplace=True)
+        (3): Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False)
+        (4): DynamicGroupBatchNorm2d(
+          192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+        (5): ReLU6(inplace=True)
+        (6): DynamicGroupConv2d(192, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (7): DynamicGroupBatchNorm2d(
+          32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+      )
+    )
+    (13): InvertedResidual(
+      (body): Sequential(
+        (0): DynamicGroupConv2d(32, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): DynamicGroupBatchNorm2d(
+          192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+        (2): ReLU6(inplace=True)
+        (3): Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False)
+        (4): DynamicGroupBatchNorm2d(
+          192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+        (5): ReLU6(inplace=True)
+        (6): DynamicGroupConv2d(192, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (7): DynamicGroupBatchNorm2d(
+          32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+      )
+    )
+    (14): InvertedResidual(
+      (body): Sequential(
+        (0): DynamicGroupConv2d(32, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): DynamicGroupBatchNorm2d(
+          192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+        (2): ReLU6(inplace=True)
+        (3): Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False)
+        (4): DynamicGroupBatchNorm2d(
+          192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+        (5): ReLU6(inplace=True)
+        (6): DynamicGroupConv2d(192, 56, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (7): DynamicGroupBatchNorm2d(
+          56, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+      )
+    )
+    (15): InvertedResidual(
+      (body): Sequential(
+        (0): DynamicGroupConv2d(56, 336, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): DynamicGroupBatchNorm2d(
+          336, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(120, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(120, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(120, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(120, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+        (2): ReLU6(inplace=True)
+        (3): Conv2d(336, 336, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=336, bias=False)
+        (4): DynamicGroupBatchNorm2d(
+          336, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(120, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(120, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(120, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(120, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+        (5): ReLU6(inplace=True)
+        (6): DynamicGroupConv2d(336, 56, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (7): DynamicGroupBatchNorm2d(
+          56, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+      )
+    )
+    (16): InvertedResidual(
+      (body): Sequential(
+        (0): DynamicGroupConv2d(56, 336, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): DynamicGroupBatchNorm2d(
+          336, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(120, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(120, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(120, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(120, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+        (2): ReLU6(inplace=True)
+        (3): Conv2d(336, 336, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=336, bias=False)
+        (4): DynamicGroupBatchNorm2d(
+          336, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(120, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(120, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(120, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(120, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+        (5): ReLU6(inplace=True)
+        (6): DynamicGroupConv2d(336, 56, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (7): DynamicGroupBatchNorm2d(
+          56, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+      )
+    )
+    (17): InvertedResidual(
+      (body): Sequential(
+        (0): DynamicGroupConv2d(56, 336, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): DynamicGroupBatchNorm2d(
+          336, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(120, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(120, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(120, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(120, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+        (2): ReLU6(inplace=True)
+        (3): Conv2d(336, 336, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=336, bias=False)
+        (4): DynamicGroupBatchNorm2d(
+          336, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(120, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(120, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(120, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(120, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+        (5): ReLU6(inplace=True)
+        (6): DynamicGroupConv2d(336, 112, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (7): DynamicGroupBatchNorm2d(
+          112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+          (bn): ModuleList(
+            (0): BatchNorm2d(40, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (1): BatchNorm2d(40, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (2): BatchNorm2d(40, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+            (3): BatchNorm2d(40, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          )
+        )
+      )
+    )
+    (18): Sequential(
+      (0): DynamicGroupConv2d(112, 1280, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (1): DynamicGroupBatchNorm2d(
+        1280, eps=1e-05, momentum=0.1, affine=True, track_running_stats=False
+        (bn): ModuleList(
+          (0): BatchNorm2d(448, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          (1): BatchNorm2d(448, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          (2): BatchNorm2d(448, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+          (3): BatchNorm2d(448, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+        )
+      )
+      (2): ReLU6(inplace=True)
+    )
+    (19): AvgPool2d(kernel_size=4, stride=4, padding=0)
+  )
+  (classifier): Sequential(
+    (0): Linear(in_features=1280, out_features=100, bias=True)
+  )
+)
+Files already downloaded and verified
+Files already downloaded and verified
+Start group-level pruning version training.
+conv2d: [1, 1], [False, True]
+Traceback (most recent call last):
+  File "train.py", line 628, in <module>
+    main()
+  File "train.py", line 626, in main
+    train_val_test()
+  File "train.py", line 524, in train_val_test
+    run_one_epoch(model_wrapper, train_loader, criterion, optimizer, epoch, phase='train', soft_criterion=soft_criterion)
+  File "train.py", line 409, in run_one_epoch
+    output = model(input)
+  File "/home/kanat77/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/kanat77/scalable_pruning/Scalable/models/gp_mobilenet_v2.py", line 121, in forward
+    x = self.features(x)
+  File "/home/kanat77/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/kanat77/.local/lib/python3.6/site-packages/torch/nn/modules/container.py", line 141, in forward
+    input = module(input)
+  File "/home/kanat77/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/kanat77/.local/lib/python3.6/site-packages/torch/nn/modules/container.py", line 141, in forward
+    input = module(input)
+  File "/home/kanat77/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/kanat77/scalable_pruning/Scalable/models/group_level_ops.py", line 64, in forward
+    / self.ratio[1]) * self.ratio[1]
+TypeError: unsupported operand type(s) for *: 'int' and 'NoneType'
+Traceback (most recent call last):
+  File "train.py", line 628, in <module>
+    main()
+  File "train.py", line 626, in main
+    train_val_test()
+  File "train.py", line 524, in train_val_test
+    run_one_epoch(model_wrapper, train_loader, criterion, optimizer, epoch, phase='train', soft_criterion=soft_criterion)
+  File "train.py", line 409, in run_one_epoch
+    output = model(input)
+  File "/home/kanat77/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/kanat77/scalable_pruning/Scalable/models/gp_mobilenet_v2.py", line 121, in forward
+    x = self.features(x)
+  File "/home/kanat77/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/kanat77/.local/lib/python3.6/site-packages/torch/nn/modules/container.py", line 141, in forward
+    input = module(input)
+  File "/home/kanat77/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/kanat77/.local/lib/python3.6/site-packages/torch/nn/modules/container.py", line 141, in forward
+    input = module(input)
+  File "/home/kanat77/.local/lib/python3.6/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/kanat77/scalable_pruning/Scalable/models/group_level_ops.py", line 64, in forward
+    / self.ratio[1]) * self.ratio[1]
+TypeError: unsupported operand type(s) for *: 'int' and 'NoneType'

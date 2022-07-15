@@ -1,0 +1,1 @@
+{"width=0.35, density=1.0 train / top1": 6.6306089743589745, "width=0.35, density=1.0 train / top5": 22.50400641025641, "width=0.35, density=1.0 train / loss": 4.1249128366128, "_timestamp": 1657886663, "_runtime": 16, "_step": 1, "_wandb": {"runtime": 16}}

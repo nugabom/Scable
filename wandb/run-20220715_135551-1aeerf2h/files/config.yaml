@@ -1,0 +1,181 @@
+wandb_version: 1
+
+BS_C:
+  desc: null
+  value: 2
+BS_R:
+  desc: null
+  value: 1
+DENSE_TEACHER:
+  desc: null
+  value: true
+DH:
+  desc: null
+  value: 1.0
+DL:
+  desc: null
+  value: 0.1
+DST_TRAIN:
+  desc: null
+  value: true
+IPKD:
+  desc: null
+  value: true
+_wandb:
+  desc: null
+  value:
+    cli_version: 0.12.18
+    framework: torch
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    python_version: 3.6.9
+    start_time: 1657893351
+    t:
+      1:
+      - 1
+      - 41
+      - 55
+      2:
+      - 1
+      - 41
+      - 55
+      3:
+      - 13
+      - 16
+      4: 3.6.9
+      5: 0.12.18
+      8:
+      - 5
+batch_size:
+  desc: null
+  value: 256
+bn_cal_batch_num:
+  desc: null
+  value: 10
+calibrate_bn:
+  desc: null
+  value: true
+cumulative_bn_stats:
+  desc: null
+  value: true
+data_loader:
+  desc: null
+  value: cifar
+data_loader_workers:
+  desc: null
+  value: 4
+data_transforms:
+  desc: null
+  value: cifar
+dataparallel:
+  desc: null
+  value: false
+dataset:
+  desc: null
+  value: CIFAR100
+dataset_dir:
+  desc: null
+  value: /home/hayun/data
+density_list:
+  desc: null
+  value:
+  - 1.0
+  - 0.3
+  - 0.2
+  - 0.1
+density_mult:
+  desc: null
+  value: 1.0
+distributed:
+  desc: null
+  value: false
+drop_last:
+  desc: null
+  value: true
+image_size:
+  desc: null
+  value: 32
+log_dir:
+  desc: null
+  value: gp_mobilenet_v2_DH0.1_DL1.0_W0.35_local_1x2_T
+lr:
+  desc: null
+  value: 0.1
+lr_scheduler:
+  desc: null
+  value: cosine_decaying
+lr_warmup:
+  desc: null
+  value: false
+lr_warmup_epochs:
+  desc: null
+  value: 5
+mean:
+  desc: null
+  value:
+  - 0.0
+  - 0.0
+  - 0.0
+model:
+  desc: null
+  value: models.gp_mobilenet_v2
+momentum:
+  desc: null
+  value: 0.9
+nesterov:
+  desc: null
+  value: true
+normalize:
+  desc: null
+  value: true
+num_classes:
+  desc: null
+  value: 100
+num_epochs:
+  desc: null
+  value: 3
+num_samples_training:
+  desc: null
+  value: 4
+optimizer:
+  desc: null
+  value: sgd
+pretrained:
+  desc: null
+  value: false
+pretrained_model_remap_keys:
+  desc: null
+  value: false
+profiling:
+  desc: null
+  value: false
+profiling_only:
+  desc: null
+  value: false
+profiling_verbose:
+  desc: null
+  value: false
+pruner:
+  desc: null
+  value: local
+random_seed:
+  desc: null
+  value: 0
+std:
+  desc: null
+  value:
+  - 1.0
+  - 1.0
+  - 1.0
+test_only:
+  desc: null
+  value: false
+track_running_stats:
+  desc: null
+  value: true
+weight_decay:
+  desc: null
+  value: 4.0e-05
+width_mult:
+  desc: null
+  value: 0.35

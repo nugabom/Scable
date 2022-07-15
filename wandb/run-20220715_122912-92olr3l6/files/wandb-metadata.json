@@ -1,0 +1,20 @@
+{
+    "os": "Linux-4.15.0-151-generic-x86_64-with-Ubuntu-18.04-bionic",
+    "python": "3.6.9",
+    "heartbeatAt": "2022-07-15T12:29:15.363334",
+    "startedAt": "2022-07-15T12:29:12.804648",
+    "docker": null,
+    "gpu": "TITAN V",
+    "gpu_count": 2,
+    "cpu_count": 32,
+    "cuda": "10.0.130",
+    "args": [
+        "app:app/demo.yml"
+    ],
+    "state": "running",
+    "program": "train.py",
+    "codePath": "train.py",
+    "host": "eslab12",
+    "username": "kanat77",
+    "executable": "/usr/bin/python3"
+}

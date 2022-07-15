@@ -1,0 +1,150 @@
+2022-07-15 12:55:36,121 INFO    MainThread:24250 [internal.py:wandb_internal():93] W&B internal server running at pid: 24250, started at: 2022-07-15 12:55:36.121523
+2022-07-15 12:55:36,125 INFO    WriterThread:24250 [datastore.py:open_for_write():75] open: /home/kanat77/scalable_pruning/Scalable/wandb/run-20220715_125535-2v0g7gy5/run-2v0g7gy5.wandb
+2022-07-15 12:55:36,131 DEBUG   SenderThread:24250 [sender.py:send():235] send: header
+2022-07-15 12:55:36,131 DEBUG   SenderThread:24250 [sender.py:send():235] send: run
+2022-07-15 12:55:36,146 DEBUG   SenderThread:24250 [git.py:repo():29] git repository is invalid
+2022-07-15 12:55:36,435 INFO    SenderThread:24250 [dir_watcher.py:__init__():205] watching files in: /home/kanat77/scalable_pruning/Scalable/wandb/run-20220715_125535-2v0g7gy5/files
+2022-07-15 12:55:36,435 INFO    SenderThread:24250 [sender.py:_start_run_threads():815] run started: 2v0g7gy5 with start time 1657889735
+2022-07-15 12:55:36,444 DEBUG   SenderThread:24250 [sender.py:send():235] send: summary
+2022-07-15 12:55:36,445 DEBUG   HandlerThread:24250 [handler.py:handle_request():141] handle_request: check_version
+2022-07-15 12:55:36,445 INFO    SenderThread:24250 [sender.py:_save_file():949] saving file wandb-summary.json with policy end
+2022-07-15 12:55:36,445 DEBUG   SenderThread:24250 [sender.py:send_request():249] send_request: check_version
+2022-07-15 12:55:36,515 DEBUG   HandlerThread:24250 [handler.py:handle_request():141] handle_request: run_start
+2022-07-15 12:55:36,523 DEBUG   HandlerThread:24250 [meta.py:__init__():35] meta init
+2022-07-15 12:55:36,524 DEBUG   HandlerThread:24250 [meta.py:__init__():49] meta init done
+2022-07-15 12:55:36,524 DEBUG   HandlerThread:24250 [meta.py:probe():209] probe
+2022-07-15 12:55:36,530 DEBUG   HandlerThread:24250 [git.py:repo():29] git repository is invalid
+2022-07-15 12:55:36,530 DEBUG   HandlerThread:24250 [meta.py:_save_pip():53] save pip
+2022-07-15 12:55:36,531 DEBUG   HandlerThread:24250 [meta.py:_save_pip():67] save pip done
+2022-07-15 12:55:36,532 DEBUG   HandlerThread:24250 [meta.py:probe():247] probe done
+2022-07-15 12:55:36,537 DEBUG   SenderThread:24250 [sender.py:send():235] send: files
+2022-07-15 12:55:36,537 INFO    SenderThread:24250 [sender.py:_save_file():949] saving file wandb-metadata.json with policy now
+2022-07-15 12:55:36,546 DEBUG   HandlerThread:24250 [handler.py:handle_request():141] handle_request: stop_status
+2022-07-15 12:55:36,546 DEBUG   SenderThread:24250 [sender.py:send_request():249] send_request: stop_status
+2022-07-15 12:55:36,775 DEBUG   SenderThread:24250 [sender.py:send():235] send: telemetry
+2022-07-15 12:55:37,151 INFO    Thread-11 :24250 [upload_job.py:push():132] Uploaded file /tmp/tmpy95_7kz3wandb/1fj8l04w-wandb-metadata.json
+2022-07-15 12:55:37,438 INFO    Thread-7  :24250 [dir_watcher.py:_on_file_created():256] file/dir created: /home/kanat77/scalable_pruning/Scalable/wandb/run-20220715_125535-2v0g7gy5/files/wandb-summary.json
+2022-07-15 12:55:37,438 INFO    Thread-7  :24250 [dir_watcher.py:_on_file_created():256] file/dir created: /home/kanat77/scalable_pruning/Scalable/wandb/run-20220715_125535-2v0g7gy5/files/requirements.txt
+2022-07-15 12:55:37,439 INFO    Thread-7  :24250 [dir_watcher.py:_on_file_created():256] file/dir created: /home/kanat77/scalable_pruning/Scalable/wandb/run-20220715_125535-2v0g7gy5/files/output.log
+2022-07-15 12:55:37,439 INFO    Thread-7  :24250 [dir_watcher.py:_on_file_created():256] file/dir created: /home/kanat77/scalable_pruning/Scalable/wandb/run-20220715_125535-2v0g7gy5/files/wandb-metadata.json
+2022-07-15 12:55:42,883 DEBUG   SenderThread:24250 [sender.py:send():235] send: telemetry
+2022-07-15 12:55:43,438 INFO    Thread-7  :24250 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/kanat77/scalable_pruning/Scalable/wandb/run-20220715_125535-2v0g7gy5/files/output.log
+2022-07-15 12:55:45,309 DEBUG   SenderThread:24250 [sender.py:send():235] send: exit
+2022-07-15 12:55:45,310 DEBUG   HandlerThread:24250 [handler.py:handle_request():141] handle_request: poll_exit
+2022-07-15 12:55:45,310 INFO    SenderThread:24250 [sender.py:send_exit():371] handling exit code: 1
+2022-07-15 12:55:45,311 INFO    SenderThread:24250 [sender.py:send_exit():373] handling runtime: 8
+2022-07-15 12:55:45,312 INFO    SenderThread:24250 [sender.py:_save_file():949] saving file wandb-summary.json with policy end
+2022-07-15 12:55:45,312 INFO    SenderThread:24250 [sender.py:send_exit():379] send defer
+2022-07-15 12:55:45,313 DEBUG   SenderThread:24250 [sender.py:send_request():249] send_request: poll_exit
+2022-07-15 12:55:45,314 DEBUG   HandlerThread:24250 [handler.py:handle_request():141] handle_request: defer
+2022-07-15 12:55:45,315 INFO    HandlerThread:24250 [handler.py:handle_request_defer():164] handle defer: 0
+2022-07-15 12:55:45,315 DEBUG   SenderThread:24250 [sender.py:send_request():249] send_request: defer
+2022-07-15 12:55:45,315 INFO    SenderThread:24250 [sender.py:send_request_defer():388] handle sender defer: 0
+2022-07-15 12:55:45,315 INFO    SenderThread:24250 [sender.py:transition_state():392] send defer: 1
+2022-07-15 12:55:45,316 DEBUG   HandlerThread:24250 [handler.py:handle_request():141] handle_request: defer
+2022-07-15 12:55:45,316 INFO    HandlerThread:24250 [handler.py:handle_request_defer():164] handle defer: 1
+2022-07-15 12:55:45,425 DEBUG   SenderThread:24250 [sender.py:send_request():249] send_request: defer
+2022-07-15 12:55:45,426 INFO    SenderThread:24250 [sender.py:send_request_defer():388] handle sender defer: 1
+2022-07-15 12:55:45,426 DEBUG   HandlerThread:24250 [handler.py:handle_request():141] handle_request: poll_exit
+2022-07-15 12:55:45,426 INFO    SenderThread:24250 [sender.py:transition_state():392] send defer: 2
+2022-07-15 12:55:45,427 DEBUG   SenderThread:24250 [sender.py:send_request():249] send_request: poll_exit
+2022-07-15 12:55:45,429 DEBUG   SenderThread:24250 [sender.py:send():235] send: stats
+2022-07-15 12:55:45,431 DEBUG   HandlerThread:24250 [handler.py:handle_request():141] handle_request: defer
+2022-07-15 12:55:45,431 INFO    HandlerThread:24250 [handler.py:handle_request_defer():164] handle defer: 2
+2022-07-15 12:55:45,431 DEBUG   SenderThread:24250 [sender.py:send_request():249] send_request: defer
+2022-07-15 12:55:45,432 INFO    SenderThread:24250 [sender.py:send_request_defer():388] handle sender defer: 2
+2022-07-15 12:55:45,432 INFO    SenderThread:24250 [sender.py:transition_state():392] send defer: 3
+2022-07-15 12:55:45,432 DEBUG   HandlerThread:24250 [handler.py:handle_request():141] handle_request: defer
+2022-07-15 12:55:45,433 INFO    HandlerThread:24250 [handler.py:handle_request_defer():164] handle defer: 3
+2022-07-15 12:55:45,433 DEBUG   SenderThread:24250 [sender.py:send_request():249] send_request: defer
+2022-07-15 12:55:45,433 INFO    SenderThread:24250 [sender.py:send_request_defer():388] handle sender defer: 3
+2022-07-15 12:55:45,433 INFO    SenderThread:24250 [sender.py:transition_state():392] send defer: 4
+2022-07-15 12:55:45,434 DEBUG   HandlerThread:24250 [handler.py:handle_request():141] handle_request: defer
+2022-07-15 12:55:45,434 INFO    HandlerThread:24250 [handler.py:handle_request_defer():164] handle defer: 4
+2022-07-15 12:55:45,435 DEBUG   SenderThread:24250 [sender.py:send():235] send: summary
+2022-07-15 12:55:45,435 INFO    SenderThread:24250 [sender.py:_save_file():949] saving file wandb-summary.json with policy end
+2022-07-15 12:55:45,436 DEBUG   SenderThread:24250 [sender.py:send_request():249] send_request: defer
+2022-07-15 12:55:45,436 INFO    SenderThread:24250 [sender.py:send_request_defer():388] handle sender defer: 4
+2022-07-15 12:55:45,436 INFO    SenderThread:24250 [sender.py:transition_state():392] send defer: 5
+2022-07-15 12:55:45,437 DEBUG   HandlerThread:24250 [handler.py:handle_request():141] handle_request: defer
+2022-07-15 12:55:45,437 INFO    HandlerThread:24250 [handler.py:handle_request_defer():164] handle defer: 5
+2022-07-15 12:55:45,437 DEBUG   SenderThread:24250 [sender.py:send_request():249] send_request: defer
+2022-07-15 12:55:45,437 INFO    SenderThread:24250 [sender.py:send_request_defer():388] handle sender defer: 5
+2022-07-15 12:55:45,444 INFO    Thread-7  :24250 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/kanat77/scalable_pruning/Scalable/wandb/run-20220715_125535-2v0g7gy5/files/wandb-summary.json
+2022-07-15 12:55:45,445 INFO    Thread-7  :24250 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/kanat77/scalable_pruning/Scalable/wandb/run-20220715_125535-2v0g7gy5/files/output.log
+2022-07-15 12:55:45,531 DEBUG   HandlerThread:24250 [handler.py:handle_request():141] handle_request: poll_exit
+2022-07-15 12:55:45,725 INFO    SenderThread:24250 [sender.py:transition_state():392] send defer: 6
+2022-07-15 12:55:45,725 DEBUG   SenderThread:24250 [sender.py:send_request():249] send_request: poll_exit
+2022-07-15 12:55:45,726 DEBUG   HandlerThread:24250 [handler.py:handle_request():141] handle_request: defer
+2022-07-15 12:55:45,726 INFO    HandlerThread:24250 [handler.py:handle_request_defer():164] handle defer: 6
+2022-07-15 12:55:45,727 DEBUG   SenderThread:24250 [sender.py:send_request():249] send_request: defer
+2022-07-15 12:55:45,727 INFO    SenderThread:24250 [sender.py:send_request_defer():388] handle sender defer: 6
+2022-07-15 12:55:45,727 INFO    SenderThread:24250 [dir_watcher.py:finish():336] shutting down directory watcher
+2022-07-15 12:55:45,828 DEBUG   HandlerThread:24250 [handler.py:handle_request():141] handle_request: poll_exit
+2022-07-15 12:55:46,445 INFO    Thread-7  :24250 [dir_watcher.py:_on_file_modified():269] file/dir modified: /home/kanat77/scalable_pruning/Scalable/wandb/run-20220715_125535-2v0g7gy5/files/config.yaml
+2022-07-15 12:55:46,445 INFO    SenderThread:24250 [dir_watcher.py:finish():366] scan: /home/kanat77/scalable_pruning/Scalable/wandb/run-20220715_125535-2v0g7gy5/files
+2022-07-15 12:55:46,446 INFO    SenderThread:24250 [dir_watcher.py:finish():380] scan save: /home/kanat77/scalable_pruning/Scalable/wandb/run-20220715_125535-2v0g7gy5/files/wandb-summary.json wandb-summary.json
+2022-07-15 12:55:46,446 INFO    SenderThread:24250 [dir_watcher.py:finish():380] scan save: /home/kanat77/scalable_pruning/Scalable/wandb/run-20220715_125535-2v0g7gy5/files/wandb-metadata.json wandb-metadata.json
+2022-07-15 12:55:46,446 INFO    SenderThread:24250 [dir_watcher.py:finish():380] scan save: /home/kanat77/scalable_pruning/Scalable/wandb/run-20220715_125535-2v0g7gy5/files/output.log output.log
+2022-07-15 12:55:46,453 INFO    SenderThread:24250 [dir_watcher.py:finish():380] scan save: /home/kanat77/scalable_pruning/Scalable/wandb/run-20220715_125535-2v0g7gy5/files/requirements.txt requirements.txt
+2022-07-15 12:55:46,459 INFO    SenderThread:24250 [dir_watcher.py:finish():380] scan save: /home/kanat77/scalable_pruning/Scalable/wandb/run-20220715_125535-2v0g7gy5/files/config.yaml config.yaml
+2022-07-15 12:55:46,459 INFO    SenderThread:24250 [sender.py:transition_state():392] send defer: 7
+2022-07-15 12:55:46,460 DEBUG   SenderThread:24250 [sender.py:send_request():249] send_request: poll_exit
+2022-07-15 12:55:46,462 DEBUG   HandlerThread:24250 [handler.py:handle_request():141] handle_request: defer
+2022-07-15 12:55:46,462 INFO    HandlerThread:24250 [handler.py:handle_request_defer():164] handle defer: 7
+2022-07-15 12:55:46,466 DEBUG   SenderThread:24250 [sender.py:send_request():249] send_request: defer
+2022-07-15 12:55:46,468 INFO    SenderThread:24250 [sender.py:send_request_defer():388] handle sender defer: 7
+2022-07-15 12:55:46,474 INFO    SenderThread:24250 [file_pusher.py:finish():145] shutting down file pusher
+2022-07-15 12:55:46,563 DEBUG   HandlerThread:24250 [handler.py:handle_request():141] handle_request: poll_exit
+2022-07-15 12:55:46,564 DEBUG   SenderThread:24250 [sender.py:send_request():249] send_request: poll_exit
+2022-07-15 12:55:46,667 DEBUG   HandlerThread:24250 [handler.py:handle_request():141] handle_request: poll_exit
+2022-07-15 12:55:46,667 DEBUG   SenderThread:24250 [sender.py:send_request():249] send_request: poll_exit
+2022-07-15 12:55:46,771 DEBUG   HandlerThread:24250 [handler.py:handle_request():141] handle_request: poll_exit
+2022-07-15 12:55:46,771 DEBUG   SenderThread:24250 [sender.py:send_request():249] send_request: poll_exit
+2022-07-15 12:55:46,874 DEBUG   HandlerThread:24250 [handler.py:handle_request():141] handle_request: poll_exit
+2022-07-15 12:55:46,875 DEBUG   SenderThread:24250 [sender.py:send_request():249] send_request: poll_exit
+2022-07-15 12:55:46,978 DEBUG   HandlerThread:24250 [handler.py:handle_request():141] handle_request: poll_exit
+2022-07-15 12:55:46,978 DEBUG   SenderThread:24250 [sender.py:send_request():249] send_request: poll_exit
+2022-07-15 12:55:47,082 DEBUG   HandlerThread:24250 [handler.py:handle_request():141] handle_request: poll_exit
+2022-07-15 12:55:47,082 DEBUG   SenderThread:24250 [sender.py:send_request():249] send_request: poll_exit
+2022-07-15 12:55:47,086 INFO    Thread-15 :24250 [upload_job.py:push():132] Uploaded file /home/kanat77/scalable_pruning/Scalable/wandb/run-20220715_125535-2v0g7gy5/files/config.yaml
+2022-07-15 12:55:47,114 INFO    Thread-12 :24250 [upload_job.py:push():132] Uploaded file /home/kanat77/scalable_pruning/Scalable/wandb/run-20220715_125535-2v0g7gy5/files/wandb-summary.json
+2022-07-15 12:55:47,116 INFO    Thread-13 :24250 [upload_job.py:push():132] Uploaded file /home/kanat77/scalable_pruning/Scalable/wandb/run-20220715_125535-2v0g7gy5/files/output.log
+2022-07-15 12:55:47,185 DEBUG   HandlerThread:24250 [handler.py:handle_request():141] handle_request: poll_exit
+2022-07-15 12:55:47,186 DEBUG   SenderThread:24250 [sender.py:send_request():249] send_request: poll_exit
+2022-07-15 12:55:47,251 INFO    Thread-14 :24250 [upload_job.py:push():132] Uploaded file /home/kanat77/scalable_pruning/Scalable/wandb/run-20220715_125535-2v0g7gy5/files/requirements.txt
+2022-07-15 12:55:47,289 DEBUG   HandlerThread:24250 [handler.py:handle_request():141] handle_request: poll_exit
+2022-07-15 12:55:47,289 DEBUG   SenderThread:24250 [sender.py:send_request():249] send_request: poll_exit
+2022-07-15 12:55:47,392 DEBUG   HandlerThread:24250 [handler.py:handle_request():141] handle_request: poll_exit
+2022-07-15 12:55:47,393 DEBUG   SenderThread:24250 [sender.py:send_request():249] send_request: poll_exit
+2022-07-15 12:55:47,452 INFO    Thread-6  :24250 [sender.py:transition_state():392] send defer: 8
+2022-07-15 12:55:47,453 DEBUG   HandlerThread:24250 [handler.py:handle_request():141] handle_request: defer
+2022-07-15 12:55:47,453 INFO    HandlerThread:24250 [handler.py:handle_request_defer():164] handle defer: 8
+2022-07-15 12:55:47,453 DEBUG   SenderThread:24250 [sender.py:send_request():249] send_request: defer
+2022-07-15 12:55:47,454 INFO    SenderThread:24250 [sender.py:send_request_defer():388] handle sender defer: 8
+2022-07-15 12:55:47,496 DEBUG   HandlerThread:24250 [handler.py:handle_request():141] handle_request: poll_exit
+2022-07-15 12:55:47,747 INFO    SenderThread:24250 [sender.py:transition_state():392] send defer: 9
+2022-07-15 12:55:47,747 DEBUG   SenderThread:24250 [sender.py:send_request():249] send_request: poll_exit
+2022-07-15 12:55:47,749 DEBUG   HandlerThread:24250 [handler.py:handle_request():141] handle_request: defer
+2022-07-15 12:55:47,749 INFO    HandlerThread:24250 [handler.py:handle_request_defer():164] handle defer: 9
+2022-07-15 12:55:47,749 DEBUG   SenderThread:24250 [sender.py:send_request():249] send_request: defer
+2022-07-15 12:55:47,750 INFO    SenderThread:24250 [sender.py:send_request_defer():388] handle sender defer: 9
+2022-07-15 12:55:47,750 INFO    SenderThread:24250 [sender.py:transition_state():392] send defer: 10
+2022-07-15 12:55:47,751 DEBUG   SenderThread:24250 [sender.py:send():235] send: final
+2022-07-15 12:55:47,752 DEBUG   HandlerThread:24250 [handler.py:handle_request():141] handle_request: defer
+2022-07-15 12:55:47,752 DEBUG   SenderThread:24250 [sender.py:send():235] send: footer
+2022-07-15 12:55:47,752 INFO    HandlerThread:24250 [handler.py:handle_request_defer():164] handle defer: 10
+2022-07-15 12:55:47,753 DEBUG   SenderThread:24250 [sender.py:send_request():249] send_request: defer
+2022-07-15 12:55:47,753 INFO    SenderThread:24250 [sender.py:send_request_defer():388] handle sender defer: 10
+2022-07-15 12:55:47,851 DEBUG   HandlerThread:24250 [handler.py:handle_request():141] handle_request: poll_exit
+2022-07-15 12:55:47,852 DEBUG   SenderThread:24250 [sender.py:send_request():249] send_request: poll_exit
+2022-07-15 12:55:47,852 INFO    SenderThread:24250 [file_pusher.py:join():150] waiting for file pusher
+2022-07-15 12:55:48,400 DEBUG   HandlerThread:24250 [handler.py:handle_request():141] handle_request: sampled_history
+2022-07-15 12:55:48,402 DEBUG   HandlerThread:24250 [handler.py:handle_request():141] handle_request: get_summary
+2022-07-15 12:55:48,403 DEBUG   HandlerThread:24250 [handler.py:handle_request():141] handle_request: shutdown
+2022-07-15 12:55:48,404 INFO    HandlerThread:24250 [handler.py:finish():806] shutting down handler
+2022-07-15 12:55:48,752 INFO    WriterThread:24250 [datastore.py:close():279] close: /home/kanat77/scalable_pruning/Scalable/wandb/run-20220715_125535-2v0g7gy5/run-2v0g7gy5.wandb
+2022-07-15 12:55:49,297 INFO    SenderThread:24250 [sender.py:finish():1111] shutting down sender
+2022-07-15 12:55:49,297 INFO    SenderThread:24250 [file_pusher.py:finish():145] shutting down file pusher
+2022-07-15 12:55:49,297 INFO    SenderThread:24250 [file_pusher.py:join():150] waiting for file pusher
+2022-07-15 12:55:49,300 INFO    MainThread:24250 [internal.py:handle_exit():80] Internal process exited
