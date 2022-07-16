@@ -437,7 +437,7 @@ def run_one_epoch(model, loader, criterion, optimizer, epoch, phase='train', sof
         print(
             '{:.1f}s\t{}\t{}/{}: '.format(
             time.time() - t_start, phase, epoch, FLAGS.num_epochs) +
-            ', '.join('{}: {:.3f}'.format(k, v.avg) for k, v in top1_meters.items()))
+            ', '.join('{}: {:.3f}\n'.format(k, v.avg) for k, v in top1_meters.items()))
     if phase in ['train', 'val']:
         #log wandb
         log = {}
@@ -543,6 +543,7 @@ def train_val_test():
                     global_pruning_update(model_wrapper, density_eval)
                 elif FLAGS.pruner == 'global_normal':
                     global_normal_pruning_update(model_wrapper, density_eval)
+
                 acc_list.append(run_one_epoch(model_wrapper, val_loader, criterion, optimizer, epoch, phase='val', 
                                 eval_width=width_eval, eval_density=density_eval))
         acc = sum(acc_list)/len(acc_list)
@@ -584,7 +585,7 @@ def train_val_test():
                 os.path.join(FLAGS.log_dir, 'latest_checkpoint.pt'))           
         
         with torch.no_grad():
-            if epoch % 10 == 0:
+            if epoch % 10 == 1:
                 density_mult_test = FLAGS.density_list
                 width_mult_test = [FLAGS.width_mult] * len(density_mult_test)
                 
@@ -597,7 +598,10 @@ def train_val_test():
                         global_pruning_update(model_wrapper, density_eval)
                     elif FLAGS.pruner == 'global_normal':
                         global_normal_pruning_update(model_wrapper, density_eval)
-                    model_wrapper.apply(log_sparsity)
+
+                    change_in_mask(model_wrapper, density_eval, epoch)
+                    recored_sparsity(model_wrapper, density_eval, epoch)
+                    
                     run_one_epoch(model_wrapper, val_loader, criterion, optimizer, epoch, phase='test', eval_width=width_eval, eval_density=density_eval)
                     
     if getattr(FLAGS, 'calibrate_bn', False):
@@ -642,7 +646,7 @@ def train_val_test():
             
 
 def main():
-    wandb.init('DST train test', name=FLAGS.log_dir, config=FLAGS.yaml())
+    wandb.init(project='DST train', name=FLAGS.log_dir, config=FLAGS.yaml())
     train_val_test()
     
 main() 
