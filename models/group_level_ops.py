@@ -1,3 +1,6 @@
+from einops import repeat, rearrange, reduce
+import wandb
+from collections import defaultdict
 from typing import Union
 import torch
 import torch.nn as nn
@@ -157,11 +160,6 @@ class DynamicGroupBatchNorm2d(nn.BatchNorm2d):
 
     def forward(self, input):
 
-        if self.momentum is None:
-            exponential_average_factor = 0.0
-        else:
-            exponential_average_factor = self.momentum
-
         if self.density in FLAGS.density_list:
             idx = FLAGS.density_list.index(self.density)
             y = nn.functional.batch_norm(
@@ -188,10 +186,57 @@ class DynamicGroupBatchNorm2d(nn.BatchNorm2d):
 def log_sparsity(m):
     if isinstance(m, DynamicGroupConv2d):
         if m.mask is not None:
-            weight = m.weight.clone() * m.mask.clone()
-        else:
-            weight = m.weight.clone()
+            weight = m.weight.data * m.mask.data
         print(f"{m}={torch.sum((weight == 0.0).int()).item() / weight.numel()}")
+
+def recored_sparsity(model, density, epoch):
+    if density == 1.0:
+        return
+
+    log = defaultdict(float)
+    idx = 1
+    for layer in model.modules():
+        if isinstance(layer, DynamicGroupConv2d):
+            k_size = layer.weight.size(3)
+            mask = layer.mask.data
+            ratio = 100 * torch.sum((mask == 0.0).int()).item() / mask.numel()
+            log[f"conv-{k_size}-{idx}"] = ratio
+            idx += 1
+    
+    wandb.log(log, step=epoch)        
+
+def change_in_mask(model, sparsity, epoch):
+    if sparsity == 1.0:
+        return
+
+    if not hasattr(change_in_mask, "prev_mask"):
+        change_in_mask.prev_mask = defaultdict(lambda : defaultdict(torch.tensor))
+    
+    idx = 1
+    if not f"{sparsity}" in change_in_mask.prev_mask:
+        for layer in model.modules():
+            if isinstance(layer, DynamicGroupConv2d):
+                k_size = layer.weight.size(3)
+                mask = layer.mask.data
+                change_in_mask.prev_mask[f"{sparsity}"][f"conv-{k_size}-{idx}"] = mask
+                idx += 1
+        return
+
+    log = {}
+    for layer in model.modules():
+        if isinstance(layer, DynamicGroupConv2d):
+            k_size = layer.weight.size(3)
+            layer_name = f"conv-{k_size}-{idx}"
+            mask = change_in_mask.prev_mask[f"{sparsity}"][layer_name]
+            new_mask = layer.mask.data
+            change_ratio = 100 * torch.sum((mask != new_mask).int()).item() / mask.numel()
+            change_in_mask.prev_mask[f"{sparsity}"][layer_name] = new_mask
+            log[f"change in mask at {sparsity}-{layer_name}"] = change_ratio
+            idx += 1
+    
+    wandb.log(log, step=epoch)           
+                
+        
 def conv_change_mask(m):
     if isinstance(m, DynamicGroupConv2d):
         m.change_mask()

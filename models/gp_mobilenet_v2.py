@@ -27,7 +27,6 @@ class InvertedResidual(nn.Module):
         layers += [
             Conv2d(
                 expand_inp, expand_inp, 3, stride, 1, 
-                groups=expand_inp,bias=False,
                 ratio=[expand_ratio, expand_ratio]),
             DynamicGroupBatchNorm2d(expand_inp, ratio=expand_ratio),
 
@@ -57,11 +56,11 @@ class Model(nn.Module):
         self.block_setting = [
             # t, c, n, s
             [1, 16, 1, 1],
-            [6, 24, 2, 2],
+            [6, 24, 2, 1],
             [6, 32, 3, 2],
             [6, 64, 4, 2],
             [6, 96, 3, 1],
-            [6, 160, 3, 1],
+            [6, 160, 3, 2],
             [6, 320, 1, 1],
         ]
         #if FLAGS.dataset == 'cifar100':
