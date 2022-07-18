@@ -1,9 +1,9 @@
 #model Arch config
 model: models.gp_mobilenet_v2
 width_mult: 1.0
-density_list : [1.0, 0.5, 0.3, 0.2, 0.15, 0.10, 0.05]
+density_list : [1.0, 0.5, 0.45, 0.4, 0.35, 0.3, 0.25]
 density_mult: 1.0
-DL: 0.05
+DL: 0.25
 DH: 1.0
 BS_R: 1
 BS_C: 2
@@ -42,7 +42,7 @@ num_epochs: 200
 
 # phase
 calibrate_bn: False
-test_only: False
+test_only: True
 
 # Wrapper
 dataparallel: False

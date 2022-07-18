@@ -139,7 +139,7 @@ class DynamicGroupConv2d(nn.Conv2d):
             weight = self.weight * self.mask
         else:
             weight = self.weight
-
+        #print(f"{self}: {torch.sum((weight == 0.0).int()).item()/weight.numel()}")
         y = nn.functional.conv2d(
             input, weight, self.bias, self.stride, self.padding,
             self.dilation, self.groups)
@@ -187,7 +187,7 @@ def log_sparsity(m):
     if isinstance(m, DynamicGroupConv2d):
         if m.mask is not None:
             weight = m.weight.data * m.mask.data
-        print(f"{m}={torch.sum((weight == 0.0).int()).item() / weight.numel()}")
+            print(f"{m}={torch.sum((weight == 0.0).int()).item() / weight.numel()}")
 
 def recored_sparsity(model, density, epoch):
     if density == 1.0:
@@ -200,7 +200,7 @@ def recored_sparsity(model, density, epoch):
             k_size = layer.weight.size(3)
             mask = layer.mask.data
             ratio = 100 * torch.sum((mask == 0.0).int()).item() / mask.numel()
-            log[f"conv-{k_size}-{idx}"] = ratio
+            log[f"{sparsity}-conv-{k_size}-{idx}"] = ratio
             idx += 1
     
     wandb.log(log, step=epoch)        
