@@ -1,1 +1,1 @@
-python3 gp_mobilenet_v2.py app:tutor.yml
+python3 gp_resnet.py app:tutor.yml
