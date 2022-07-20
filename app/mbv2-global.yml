@@ -1,15 +1,9 @@
 #model Arch config
 model: models.gp_mobilenet_v2
 width_mult: 1.0
-<<<<<<< HEAD
-density_list : [1.0, 0.5, 0.45, 0.40, 0.35, 0.3, 0.25, 0.20, 0.15]
-density_mult: 1.0
-DL: 0.15
-=======
 density_list : [1.0, 0.5, 0.45, 0.4, 0.35, 0.3, 0.25]
 density_mult: 1.0
 DL: 0.25
->>>>>>> db5c362e0cd0ff9844f9661674f5679681b5ee06
 DH: 1.0
 BS_R: 1
 BS_C: 2

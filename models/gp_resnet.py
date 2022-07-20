@@ -32,30 +32,31 @@ class BasicBlock(nn.Module):
         return out
 
 class Model(nn.Module):
-    def __init__(self, num_classes=10, input_size=32):
+    def __init__(self, num_classes=100, input_size=32):
         super(Model, self).__init__()
+        width_mult = FLAGS.width_mult
         self.conv = nn.Sequential(
-                Conv2d(in_channels=3, out_channels=64, kernel_size=3, stride=1, padding=1, bias=False),
-                DynamicGroupBatchNorm2d(64),
+                Conv2d(in_channels=3, out_channels=int(64*width_mult), kernel_size=3, stride=1, padding=1, bias=False),
+                DynamicGroupBatchNorm2d(int(64*width_mult)),
                 nn.ReLU6(),
-                DynamicGroupConv2d(in_channels=64, out_channels=128, kernel_size=3, stride=1, padding=1, bias=False),
-                DynamicGroupBatchNorm2d(128),
-                nn.ReLU6(),
-                nn.MaxPool2d(kernel_size=2, stride=2),
-                BasicBlock(inp=128, outp=128, stride=1),
-                DynamicGroupConv2d(in_channels=128, out_channels=256, kernel_size=3, stride=1, padding=1, bias=False),
-                DynamicGroupBatchNorm2d(256),
+                DynamicGroupConv2d(in_channels=int(64*width_mult), out_channels=int(128*width_mult), kernel_size=3, stride=1, padding=1, bias=False),
+                DynamicGroupBatchNorm2d(int(128*width_mult)),
                 nn.ReLU6(),
                 nn.MaxPool2d(kernel_size=2, stride=2),
-                DynamicGroupConv2d(in_channels=256, out_channels=256, kernel_size=3, stride=1, padding=1, bias=False),
-                DynamicGroupBatchNorm2d(256),
+                BasicBlock(inp=int(128*width_mult), outp=int(128*width_mult), stride=1),
+                DynamicGroupConv2d(in_channels=int(128*width_mult), out_channels=int(256*width_mult), kernel_size=3, stride=1, padding=1, bias=False),
+                DynamicGroupBatchNorm2d(int(256*width_mult)),
                 nn.ReLU6(),
                 nn.MaxPool2d(kernel_size=2, stride=2),
-                BasicBlock(inp=256, outp=256, stride=1),
+                DynamicGroupConv2d(in_channels=int(256*width_mult), out_channels=int(256*width_mult), kernel_size=3, stride=1, padding=1, bias=False),
+                DynamicGroupBatchNorm2d(int(256*width_mult)),
+                nn.ReLU6(),
+                nn.MaxPool2d(kernel_size=2, stride=2),
+                BasicBlock(inp=int(256*width_mult), outp=int(256*width_mult), stride=1),
                 nn.MaxPool2d(kernel_size=2, stride=2),
         )
 
-        self.fc = nn.Linear(1024, 10, bias=True)
+        self.fc = nn.Linear(int(1024*width_mult), num_classes, bias=True)
 
     def forward(self, x):
         out = self.conv(x)
