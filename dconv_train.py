@@ -530,6 +530,12 @@ def train_val_test():
 
     if getattr(FLAGS, 'test_only', False):
         print('start test')
+        if os.path.exists(os.path.join(FLAGS.log_dir, 'best_model.pt')):
+            checkpoint = torch.load(
+            os.path.join(FLAGS.log_dir, 'best_model.pt'),
+                         map_location=lambda storage, loc:storage)
+            model_wrapper.load_state_dict(checkpoint['model'])
+
         with torch.no_grad():
             density_mult_test = FLAGS.density_list
             width_mult_test = [FLAGS.width_mult] * len(FLAGS.density_list)
@@ -553,8 +559,8 @@ def train_val_test():
         
         acc_list = []
         with torch.no_grad():
-            density_mult_eval = [max(FLAGS.density_list), min(FLAGS.density_list)]
-            width_mult_eval = [FLAGS.width_mult, FLAGS.width_mult]
+            density_mult_eval = FLAGS.density_list
+            width_mult_eval = [FLAGS.width_mult] * len(density_list)
             for width_eval, density_eval in zip(width_mult_eval, density_mult_eval):
                 model_wrapper.apply(lambda m: setattr(m, 'width_mult', width_eval))
                 model_wrapper.apply(lambda m: setattr(m, 'density', density_eval))
@@ -606,7 +612,7 @@ def train_val_test():
                 os.path.join(FLAGS.log_dir, 'latest_checkpoint.pt'))           
         
         with torch.no_grad():
-            if epoch % 10 == 1:
+            if epoch % 5 == 1:
                 density_mult_test = FLAGS.density_list
                 width_mult_test = [FLAGS.width_mult] * len(density_mult_test)
                 
@@ -623,7 +629,6 @@ def train_val_test():
                     change_in_mask(model_wrapper, density_eval, epoch)
                     recored_sparsity(model_wrapper, density_eval, epoch)
                     
-                    run_one_epoch(model_wrapper, val_loader, criterion, optimizer, epoch, phase='test', eval_width=width_eval, eval_density=density_eval)
                     
     if getattr(FLAGS, 'calibrate_bn', False):
         if getattr(FLAGS, 'DST_TRAIN', False):
@@ -667,7 +672,7 @@ def train_val_test():
             
 
 def main():
-    wandb.init(project='DST train', name=FLAGS.log_dir, config=FLAGS.yaml())
+    wandb.init(project='TEST', name=FLAGS.log_dir, config=FLAGS.yaml())
     train_val_test()
     
 main() 
