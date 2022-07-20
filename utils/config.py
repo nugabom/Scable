@@ -161,9 +161,9 @@ def app():
     
         model = FLAGS.model.split('.')[1]
         if FLAGS.DENSE_TEACHER:
-            FLAGS.log_dir = f"{use}{model}_DH{FLAGS.DH}_07_19_DL{FLAGS.DL}_W{FLAGS.width_mult}_{FLAGS.pruner}_{FLAGS.BS_R}x{FLAGS.BS_C}_T"
+            FLAGS.log_dir = f"{use}{model}_DH{FLAGS.DH}_07_20_DL{FLAGS.DL}_W{FLAGS.width_mult}_{FLAGS.pruner}_{FLAGS.BS_R}x{FLAGS.BS_C}_T"
         else:
-            FLAGS.log_dir = f"{use}{model}_DH{FLAGS.DH}_07_19_DL{FLAGS.DL}_W{FLAGS.width_mult}_{FLAGS.pruner}_{FLAGS.BS_R}x{FLAGS.BS_C}"
+            FLAGS.log_dir = f"{use}{model}_DH{FLAGS.DH}_07_20_DL{FLAGS.DL}_W{FLAGS.width_mult}_{FLAGS.pruner}_{FLAGS.BS_R}x{FLAGS.BS_C}"
     
         return FLAGS
     else:
