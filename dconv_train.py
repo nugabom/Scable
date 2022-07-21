@@ -327,15 +327,12 @@ def lr_schedule_per_iteration(optimizer, epoch, batch_idx=0):
     
 def run_one_epoch(model, loader, criterion, optimizer, epoch, phase='train', soft_criterion=None, eval_width=None, eval_density=None):
     top1_label = "width=${width}, density=${density} ${phase} / top1"
-    top5_label = "width=${width}, density=${density} ${phase} / top5"
     loss_label = "width=${width}, density=${density} ${phase} / loss"
     
     top1_fmt = Template(top1_label)
-    top5_fmt = Template(top5_label)
     loss_fmt = Template(loss_label)
     
     top1_meters = defaultdict(AverageMeter)
-    top5_meters = defaultdict(AverageMeter)
     loss_meters = defaultdict(AverageMeter)
     
     t_start = time.time()
@@ -389,7 +386,6 @@ def run_one_epoch(model, loader, criterion, optimizer, epoch, phase='train', sof
                         top1, top5 = accuracy(output, target, topk=(1, 5))
                         
                         top1_meters[top1_fmt.substitute(width=width_mult, density=density, phase=phase)].update(top1.item(), batch_size)
-                        top5_meters[top5_fmt.substitute(width=width_mult, density=density, phase=phase)].update(top5.item(), batch_size)
                         loss_meters[loss_fmt.substitute(width=width_mult, density=density, phase=phase)].update(loss.item(), batch_size)
                     else:
                         if getattr(FLAGS, 'IPKD', False):
@@ -424,7 +420,6 @@ def run_one_epoch(model, loader, criterion, optimizer, epoch, phase='train', sof
                 loss.backward()
                 top1, top5 = accuracy(output, target, topk=(1, 5))
                 top1_meters[top1_fmt.substitute(width=width_mult, density=density, phase=phase)].update(top1.item(), batch_size)
-                top5_meters[top5_fmt.substitute(width=width_mult, density=density, phase=phase)].update(top5.item(), batch_size)
                 loss_meters[loss_fmt.substitute(width=width_mult, density=density, phase=phase)].update(loss.item(), batch_size)
                 #loss.backward()
             optimizer.step()
@@ -437,7 +432,6 @@ def run_one_epoch(model, loader, criterion, optimizer, epoch, phase='train', sof
             loss = torch.mean(criterion(output, target))
             top1, top5 = accuracy(output, target, topk=(1, 5))
             top1_meters[top1_fmt.substitute(width=eval_width, density=eval_density, phase=phase)].update(top1.item(), batch_size)
-            top5_meters[top5_fmt.substitute(width=eval_width, density=eval_density, phase=phase)].update(top5.item(), batch_size)
             loss_meters[loss_fmt.substitute(width=eval_width, density=eval_density, phase=phase)].update(loss.item(), batch_size)
             
     if phase != 'cal':
@@ -448,7 +442,7 @@ def run_one_epoch(model, loader, criterion, optimizer, epoch, phase='train', sof
     if phase in ['train', 'val']:
         #log wandb
         log = {}
-        for metric in [top1_meters, top5_meters, loss_meters]:
+        for metric in [top1_meters, loss_meters]:
             for what, meter in metric.items():
                 log[what] = meter.avg
         wandb.log(log, step=epoch)
@@ -477,7 +471,7 @@ def train_val_test():
     if getattr(FLAGS, 'pretrained', False):
         # load all tensors onto the CPU
         checkpoint = torch.load(
-            FLAGS.pretrained, map_location=lambda storage, loc: storage)
+            os.path.join(FLAGS.pretrained, 'latest_checkpoint.pt'), map_location=lambda storage, loc: storage)
         # update keys from external models
         if type(checkpoint) == dict and 'model' in checkpoint:
             checkpoint = checkpoint['model']
@@ -489,9 +483,10 @@ def train_val_test():
                 new_checkpoint[key_new] = checkpoint[key_old]
                 print('remap {} to {}'.format(key_new, key_old))
             checkpoint = new_checkpoint
-        model_wrapper.load_state_dict(checkpoint)
-        print('Loaded model {}.'.format(FLAGS.pretrained))
+        model_wrapper.load_state_dict(checkpoint, strict=False)
+        print('Loaded model {} '.format(FLAGS.pretrained))
 
+    
     optimizer = get_optimizer(model_wrapper)
 
     # check resume training
@@ -528,13 +523,17 @@ def train_val_test():
     train_loader, val_loader, test_loader = data_loader(
         train_set, val_set, test_set)
 
+    model_wrapper.apply(lambda m: setattr(m, 'width_mult', FLAGS.width_mult))
+    model_wrapper.apply(lambda m: setattr(m, 'density', 1.0))
+
+    run_one_epoch(model_wrapper, val_loader, criterion, optimizer, -1, phase='test', eval_width=0.5, eval_density=1.0)
     if getattr(FLAGS, 'test_only', False):
         print('start test')
         if os.path.exists(os.path.join(FLAGS.log_dir, 'best_model.pt')):
             checkpoint = torch.load(
             os.path.join(FLAGS.log_dir, 'best_model.pt'),
                          map_location=lambda storage, loc:storage)
-            model_wrapper.load_state_dict(checkpoint['model'])
+            model_wrapper.load_state_dict(checkpoint['model'], strict=False)
 
         with torch.no_grad():
             density_mult_test = FLAGS.density_list
@@ -560,7 +559,7 @@ def train_val_test():
         acc_list = []
         with torch.no_grad():
             density_mult_eval = FLAGS.density_list
-            width_mult_eval = [FLAGS.width_mult] * len(density_list)
+            width_mult_eval = [FLAGS.width_mult] * len(density_mult_eval)
             for width_eval, density_eval in zip(width_mult_eval, density_mult_eval):
                 model_wrapper.apply(lambda m: setattr(m, 'width_mult', width_eval))
                 model_wrapper.apply(lambda m: setattr(m, 'density', density_eval))

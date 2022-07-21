@@ -486,7 +486,7 @@ def train_val_test():
         print('Loaded model {}.'.format(FLAGS.pretrained))
 
     optimizer = get_optimizer(model_wrapper)
-
+    
     # check resume training
     if os.path.exists(os.path.join(FLAGS.log_dir, 'latest_checkpoint.pt')):
         checkpoint = torch.load(

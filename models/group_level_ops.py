@@ -189,6 +189,13 @@ def log_sparsity(m):
             weight = m.weight.data * m.mask.data
             print(f"{m}={torch.sum((weight == 0.0).int()).item() / weight.numel()}")
 
+def log_nnz(m):
+    print("nnz log")
+    if isinstance(m, DynamicGroupConv2d):
+        if m.mask is not None:
+            weight = m.weight.data * m.mask.data
+            print(f"{m}: {torch.sum((weight == 0.0).int()).item()} ")
+
 def recored_sparsity(model, density, epoch):
     if density == 1.0:
         return

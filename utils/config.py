@@ -158,12 +158,16 @@ def app():
         if use_colab:
             FLAGS.use_colab = True
             use = "/content/gdrive/MyDrive/"
-    
+   
+        use_pretrained = ''
+        if getattr(FLAGS, 'pretrained', False):
+            use_pretrained = '_P'
+            
         model = FLAGS.model.split('.')[1]
         if FLAGS.DENSE_TEACHER:
-            FLAGS.log_dir = f"{use}{model}_DH{FLAGS.DH}_07_20_DL{FLAGS.DL}_W{FLAGS.width_mult}_{FLAGS.pruner}_{FLAGS.BS_R}x{FLAGS.BS_C}_T"
+            FLAGS.log_dir = f"{use}{model}_DH{FLAGS.DH}_07_19_DL{FLAGS.DL}_W{FLAGS.width_mult}_{FLAGS.pruner}_{FLAGS.BS_R}x{FLAGS.BS_C}_T{use_pretrained}"
         else:
-            FLAGS.log_dir = f"{use}{model}_DH{FLAGS.DH}_07_20_DL{FLAGS.DL}_W{FLAGS.width_mult}_{FLAGS.pruner}_{FLAGS.BS_R}x{FLAGS.BS_C}"
+            FLAGS.log_dir = f"{use}{model}_DH{FLAGS.DH}_07_19_DL{FLAGS.DL}_W{FLAGS.width_mult}_{FLAGS.pruner}_{FLAGS.BS_R}x{FLAGS.BS_C}{use_pretrained}"
     
         return FLAGS
     else:
