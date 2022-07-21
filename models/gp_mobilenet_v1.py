@@ -3,7 +3,7 @@ import torch.nn as nn
 
 
 from .slimmable_ops import USBatchNorm2d, USConv2d, USLinear, make_divisible
-from .group_level_ops import DynamicGroupConv2d, DynamicGroupBatchNorm2d
+from .group_level_ops import *
 from utils.config import FLAGS
 
 
@@ -13,8 +13,8 @@ class DepthwiseSeparableConv(nn.Module):
         assert stride in [1, 2]
 
         layers = [
-            USConv2d(
-                inp, inp, 3, stride, 1, groups=inp, depthwise=True,
+            Conv2d(
+                inp, inp, 3, stride, 1, groups=inp,
                 bias=False),
             DynamicGroupBatchNorm2d(inp),
             nn.ReLU6(inplace=True),
@@ -52,15 +52,15 @@ class Model(nn.Module):
 
         self.features = []
 
-        width_mult = FLAGS.width_mult_range[-1]
+        width_mult = FLAGS.width_mult
         # head
         assert input_size % downsample == 0
         channels = make_divisible(32 * width_mult)
         self.outp = make_divisible(1024 * width_mult)
-        #first_stride = 2
+        first_stride = 2
         self.features.append(
             nn.Sequential(
-                USConv2d(
+                Conv2d(
                     3, channels, 3, first_stride, 1, bias=False,
                     us=[False, True]),
                 DynamicGroupBatchNorm2d(channels),
@@ -89,6 +89,7 @@ class Model(nn.Module):
         self.classifier = nn.Sequential(
             USLinear(self.outp, num_classes, us=[True, False])
         )
+
         if FLAGS.reset_parameters:
             self.reset_parameters()
 
