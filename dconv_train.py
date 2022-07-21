@@ -100,7 +100,7 @@ def data_transforms():
 
 def dataset(train_transforms, val_transforms, test_transforms):
     """get dataset for classification"""
-    if FLAGS.dataset == 'imagenet1k':
+    if FLAGS.dataset == 'imagenet1k_basic':
         if not FLAGS.test_only:
             train_set = datasets.ImageFolder(
                 os.path.join(FLAGS.dataset_dir, 'train'),
