@@ -64,7 +64,7 @@ class Conv2d(nn.Conv2d):
                 self.out_channels_max
                 * self.width_mult
                 / self.ratio[1]) * self.ratio[1]
-
+        
         y = nn.functional.conv2d(
             input, self.weight, self.bias, self.stride, self.padding,
             self.dilation, self.groups)
@@ -114,9 +114,10 @@ class DynamicGroupConv2d(nn.Conv2d):
             self.mask = None
         else:
             # HB-level
-            block_weight = self.weight.clone()
+            block_weight = self.weight.data
             #block_weight[:self.dense_out_channels_max, :self.dense_in_channels_max:, :, :] = 0.
             block_weight_l2 = block_weight.reshape(self.out_channels_max//self.BS_R, self.BS_R, (self.in_channels_max * block_weight.size(2) * block_weight.size(3))//self.BS_C, self.BS_C, -1).pow(2).mean(dim=(1, 3, 4))
+
 
             #block_weight_l2 = self.weight.reshape(self.out_channels//self.BS_R, self.BS_R, self.in_channels//self.BS_C, self.BS_C, -1).pow(2).mean(dim=(1, 3, 4))
             q = 100 * (1-self.density)
@@ -136,7 +137,7 @@ class DynamicGroupConv2d(nn.Conv2d):
 
     def forward(self, input):
         if self.mask is not None:
-            weight = self.weight * self.mask
+            weight = self.weight.cuda() * self.mask.cuda()
         else:
             weight = self.weight
         #print(f"{self}: {torch.sum((weight == 0.0).int()).item()/weight.numel()}")
@@ -195,6 +196,18 @@ def log_nnz(m):
         if m.mask is not None:
             weight = m.weight.data * m.mask.data
             print(f"{m}: {torch.sum((weight == 0.0).int()).item()} ")
+
+def log_weight_dist(model):
+    param_list = []
+    for i, layer in enumerate(model.modules()):
+        if isinstance(layer, DynamicGroupConv2d):
+            param_list.append(layer.weight.view(-1).cpu().detach().numpy())
+
+    import matplotlib.pyplot as plt
+    fig, ax = plt.subplots()
+    ax.boxplot(param_list)
+    plt.show()
+    plt.savefig('local_pre-train.png')
 
 def recored_sparsity(model, density, epoch):
     if density == 1.0:

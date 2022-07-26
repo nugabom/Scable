@@ -336,7 +336,6 @@ def run_one_epoch(model, loader, criterion, optimizer, epoch, phase='train', sof
     loss_meters = defaultdict(AverageMeter)
     
     t_start = time.time()
-    
     assert phase in ['train', 'val', 'test', 'cal'], 'Invalid phase.'
     train = phase == 'train'
     if train:
@@ -348,6 +347,8 @@ def run_one_epoch(model, loader, criterion, optimizer, epoch, phase='train', sof
     _density_list = copy.deepcopy(FLAGS.density_list)
     max_density = max(_density_list)
     min_density = min(_density_list)
+    
+    gradient_accum = getattr(FLAGS, 'gradient_accum', 1)
     
     for batch_idx, (input, target) in enumerate(loader):
         if phase == 'cal':
@@ -361,7 +362,6 @@ def run_one_epoch(model, loader, criterion, optimizer, epoch, phase='train', sof
         
         # train part
         if train:
-            optimizer.zero_grad()
             
             # Dynamic Sparse Train part
             if getattr(FLAGS, 'DST_TRAIN', False):
@@ -381,7 +381,7 @@ def run_one_epoch(model, loader, criterion, optimizer, epoch, phase='train', sof
                     
                     output = model(input)
                     if density == max_density:
-                        loss = torch.mean(criterion(output, target))
+                        loss = torch.mean(criterion(output, target)) / gradient_accum
                         soft_target = torch.nn.functional.softmax(output, dim=1)
                         top1, top5 = accuracy(output, target, topk=(1, 5))
                         
@@ -389,12 +389,12 @@ def run_one_epoch(model, loader, criterion, optimizer, epoch, phase='train', sof
                         loss_meters[loss_fmt.substitute(width=width_mult, density=density, phase=phase)].update(loss.item(), batch_size)
                     else:
                         if getattr(FLAGS, 'IPKD', False):
-                            loss = torch.mean(soft_criterion(output, soft_target.detach()))
+                            loss = torch.mean(soft_criterion(output, soft_target.detach())) / gradient_accum
                             top1 = accuracy(output, target)[0]
                             top1_meters[top1_fmt.substitute(width=width_mult, density=density, phase=phase)].update(top1.item(), batch_size)
                             loss_meters[loss_fmt.substitute(width=width_mult, density=density, phase=phase)].update(loss.item(), batch_size)
                         else:
-                            loss = torch.mean(criterion(output, target))
+                            loss = torch.mean(criterion(output, target)) / gradient_accum
                             top1 = accuracy(output, target)[0]
                             top1_meters[top1_fmt.substitute(width=width_mult, density=density, phase=phase)].update(top1.item(), batch_size)
                             loss_meters[loss_fmt.substitute(width=width_mult, density=density, phase=phase)].update(loss.item(), batch_size)
@@ -422,7 +422,9 @@ def run_one_epoch(model, loader, criterion, optimizer, epoch, phase='train', sof
                 top1_meters[top1_fmt.substitute(width=width_mult, density=density, phase=phase)].update(top1.item(), batch_size)
                 loss_meters[loss_fmt.substitute(width=width_mult, density=density, phase=phase)].update(loss.item(), batch_size)
                 #loss.backward()
-            optimizer.step()
+            if ((batch_idx + 1) % gradient_accum == 0) or (batch_idx+1 == len(loader)):
+                optimizer.step()
+                optimizer.zero_grad()
             lr_schedule_per_iteration(optimizer, epoch, batch_idx)
         
         # evaluation
@@ -548,7 +550,8 @@ def train_val_test():
                 elif FLAGS.pruner == 'global_normal':
                     global_normal_pruning_update(model_wrapper, density)
                 model_wrapper.apply(log_sparsity)
-                run_one_epoch(model_wrapper, val_loader, criterion, optimizer, -1, phase='test', eval_width=width_mult, eval_density=density)
+                log_weight_dist(model_wrapper)
+                #run_one_epoch(model_wrapper, val_loader, criterion, optimizer, -1, phase='test', eval_width=width_mult, eval_density=density)
         return
         
     

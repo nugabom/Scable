@@ -1,11 +1,11 @@
 #model Arch config
 model: models.gp_resnet
-width_mult: 0.50
-density_list : [1.0, 0.3, 0.2, 0.1]
+width_mult: 1.00
+density_list : [1.0, 0.4, 0.3, 0.2, 0.1]
 #density_list: [1.0]
 density_mult: 1.0
 DL: 0.1
-DH: 0.3
+DH: 0.4
 BS_R: 1
 BS_C: 2
 
@@ -46,11 +46,11 @@ calibrate_bn: False
 test_only: False
 
 # Wrapper
-dataparallel: False
+dataparallel: True
 distributed: False
 
 # model pre-trained
-pretrained: gp_resnet_DH1.0_07_19_DL1.0_W0.5_local_1x2
+#pretrained: gp_resnet_DH1.0_07_19_DL1.0_W1.0_local_1x2
 pretrained_model_remap_keys: False
 
 #profiling

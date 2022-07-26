@@ -3,7 +3,7 @@ model: models.gp_mobilenet_v1
 width_mult: 1.00
 density_list : [1.0, 0.3, 0.2, 0.1]
 #density_list: [1.0]
-density_mult: 1.0
+density_mult: 1.00
 DL: 0.1
 DH: 0.3
 BS_R: 1
@@ -12,6 +12,7 @@ BS_C: 2
 #seed
 random_seed: 0
 
+gradient_accum: 4
 # data info - dataset
 dataset: imagenet1k_basic
 data_transforms: imagenet1k_mobile
@@ -26,14 +27,14 @@ mean: [0.507, 0.4865, 0.4409]
 std: [0.2673, 0.2564, 0.2761]
 
 #data info - dataloader (batch size / )
-batch_size: 128
+batch_size: 256
 drop_last: True
 data_loader_workers: 4
 
 #optimizer
 optimizer: sgd
-lr: 0.05
-lr_scheduler: cosine_decaying
+lr: 0.25
+lr_scheduler: linear_decaying
 lr_warmup: False
 momentum: 0.9
 nesterov: True
@@ -46,7 +47,7 @@ calibrate_bn: False
 test_only: False
 
 # Wrapper
-dataparallel: False
+dataparallel: True
 distributed: False
 
 # model pre-trained
@@ -61,7 +62,7 @@ profiling_verbose: False
 # Training
 IPKD: True
 num_samples_training: 4
-pruner: local
+pruner: global_normal
 DST_TRAIN: True
 DENSE_TEACHER: True
 
